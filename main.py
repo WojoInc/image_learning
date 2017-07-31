@@ -20,7 +20,22 @@ def determineNum(filePath):
             splitEx = example.split('::')
             curNum = splitEx[0]
             curArr = splitEx[1]
-            
+
+            pixelEx = curArr.split('],')
+            pixelInQ = inQuestion.split('],')
+
+            x = 0
+
+            while x < len(pixelEx):
+                if pixelEx[x] == pixelInQ[x]:
+                    matchedArr.append(int(curNum))
+                x+=1
+        except Exception as ex:
+            print(str(ex))
+    print(matchedArr)
+    x = Counter(matchedArr)
+    print(x)
+    print(x[0])
 
 
 def threshold(img_arr):
@@ -96,3 +111,4 @@ ax4.imshow(img_arr4)
 
 print(img_arr)
 plt.show()
+determineNum('images/hand-drawn.png')
